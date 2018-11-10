@@ -1,11 +1,7 @@
 import asyncio
-import zmq
-import zmq.asyncio
 from zero_message import EnvelopSocket
 
-port = "5556"
-context = zmq.asyncio.Context()
-socket = EnvelopSocket.as_subscriber(context, port)
+socket = EnvelopSocket.as_subscriber()
 
 def doSomething(msg):
     print(msg)

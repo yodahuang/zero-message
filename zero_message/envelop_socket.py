@@ -1,5 +1,6 @@
 import asyncio
 import zmq
+import zmq.asyncio
 import pickle
 
 class EnvelopSocket:
@@ -9,12 +10,8 @@ class EnvelopSocket:
     """
 
     @classmethod
-    def as_publisher(cls, context, port=5566):
+    def as_publisher(cls, port=5566):
         """Convenient factory method for getting a publisher
-        
-        Arguments:
-            context {obj} -- ZMQ context
-            port {int} -- Binding port number
         
         Keyword Arguments:
             port {int} -- Binding port number (default: 5566)
@@ -22,17 +19,16 @@ class EnvelopSocket:
         Returns:
             EnvelopSocket -- The generated wrapped socket
         """
-        publisher = context.socket(zmq.PUB)
+        if not hasattr(cls, 'context'):
+            cls.context = zmq.Context()
+        publisher = cls.context.socket(zmq.PUB)
         publisher.bind("tcp://*:%s" % port)
         return cls(publisher)
     
     
     @classmethod
-    def as_subscriber(cls, context, port=5566):
+    def as_subscriber(cls, port=5566):
         """Convenient factory method for getting a subscriber
-        
-        Arguments:
-            context {obj} -- ZMQ context
 
         Keyword Arguments:
             port {int} -- Connecting port number (default: 5566)
@@ -40,7 +36,9 @@ class EnvelopSocket:
         Returns:
             EnvelopSocket -- The generated wrapped socket
         """
-        subscriber = context.socket(zmq.SUB)
+        if not hasattr(cls, 'context'):
+            cls.context = zmq.asyncio.Context()
+        subscriber = cls.context.socket(zmq.SUB)
         subscriber.connect("tcp://localhost:%s" % port)
         return cls(subscriber)
 
