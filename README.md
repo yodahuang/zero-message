@@ -8,7 +8,7 @@
 ### Installation
 
 ```
-pip install zero_message
+pip install zeromessage
 ```
 
 ### Quick start
@@ -18,13 +18,9 @@ Refer to the `/examples`:
 ```python
 # listener.py
 import asyncio
-import zmq
-import zmq.asyncio
-from zero_message import EnvelopSocket
+from zeromessage import EnvelopSocket
 
-port = "5556"
-context = zmq.asyncio.Context()
-socket = EnvelopSocket.as_subscriber(context, port)
+socket = EnvelopSocket.as_subscriber()
 
 def doSomething(msg):
     print(msg)
@@ -36,13 +32,10 @@ asyncio.get_event_loop().run_until_complete(subscribe_coroutine())
 
 ```python
 # talker.py
-import zmq
 import time
-from zero_message import EnvelopSocket
+from zeromessage import EnvelopSocket
 
-port = "5556"
-context = zmq.Context()
-socket = EnvelopSocket.as_publisher(context, port)
+socket = EnvelopSocket.as_publisher()
 
 while True:
     socket.publish('test', {
@@ -56,5 +49,5 @@ while True:
 A `rostopic` like tool is provided.
 
 ```
-zerotopic echo topic_name
+zerotopic echo -- --help
 ```

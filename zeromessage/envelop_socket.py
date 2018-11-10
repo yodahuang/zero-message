@@ -22,12 +22,12 @@ class EnvelopSocket:
         if not hasattr(cls, 'context'):
             cls.context = zmq.Context()
         publisher = cls.context.socket(zmq.PUB)
-        publisher.bind("tcp://*:%s" % port)
+        publisher.bind("tcp://*:{}".format(port))
         return cls(publisher)
     
     
     @classmethod
-    def as_subscriber(cls, port=5566):
+    def as_subscriber(cls, ip='localhost', port=5566):
         """Convenient factory method for getting a subscriber
 
         Keyword Arguments:
@@ -39,7 +39,7 @@ class EnvelopSocket:
         if not hasattr(cls, 'context'):
             cls.context = zmq.asyncio.Context()
         subscriber = cls.context.socket(zmq.SUB)
-        subscriber.connect("tcp://localhost:%s" % port)
+        subscriber.connect("tcp://{}:{}".format(ip, port))
         return cls(subscriber)
 
     def __init__(self, socket):
@@ -87,7 +87,7 @@ class EnvelopSocket:
 
         return receive_and_callback
 
-
+        
 
 
 

@@ -1,5 +1,5 @@
 import time
-from zero_message import EnvelopSocket
+from zeromessage import EnvelopSocket
 
 socket = EnvelopSocket.as_publisher()
 
