@@ -8,7 +8,7 @@ with open(path.join(this_directory, 'README.md'), encoding='utf-8') as f:
 
 setup(name='zeromessage',
       version='0.2',
-      description='Lightweight ROS-like pub-sub tool utilizing ØMQ',
+      description='Lightweight ROS-like pub-sub tool utilizing ZeroMQ',
       url='https://github.com/yodahuang/zero-message',
       author='Yanda Huang',
       author_email='yord.huang@gmail.com',
