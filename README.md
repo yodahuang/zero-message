@@ -1,5 +1,9 @@
 ## Zero Message
 
+[![Documentation Status](https://readthedocs.org/projects/zero-message/badge/?version=latest)](https://zero-message.readthedocs.io/en/latest/?badge=latest)
+
+
+
 *Zero Message* is a lightweight ROS-like pub-sub tool for Python 3.4+.
 
 - Provides a wrapper around [ZeroMQ](http://zeromq.org) socket.
