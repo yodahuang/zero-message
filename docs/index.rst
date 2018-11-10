@@ -10,10 +10,10 @@ Welcome to Zero Message's documentation!
    :maxdepth: 2
    :caption: Contents:
 
-.. autoclass:: EnvelopSocket
-   :members:
-
-.. include:: zeromessage.rst
+.. autoclass:: zeromessage.envelop_socket.EnvelopSocket
+    :members:
+    :undoc-members:
+    :show-inheritance:
 
 Indices and tables
 ==================
