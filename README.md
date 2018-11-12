@@ -11,6 +11,20 @@
 
 ### Installation
 
+You need `zeromq` installed on your system. Refer to the [official guide](http://zeromq.org/intro:get-the-software).  For your convenience, here's some common ones:
+```
+# Debian-based
+sudo apt-get install libzmq3-dev
+
+# RHEL-based
+sudo yum install libzmq3-devel
+
+# Mac
+brew install zmq
+```
+
+Then you can install this library
+
 ```
 pip install zeromessage
 ```
@@ -58,4 +72,6 @@ zerotopic echo -- --help
 
 ### API Document
 
-[zero-message.readthedocs.io](zero-message.readthedocs.io)
+The document is currently broken. In the mean time you can just take a look at the well-documented source code.
+
+[zero-message.readthedocs.io](http://zero-message.readthedocs.io)
